@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android_studio_project/Mybookshelf/app/src/main/res/drawable/ic_baseline_image_not_supported_24.xml" value="0.1315" />
+        <entry key="..\:/Android_studio_project/Mybookshelf/app/src/main/res/layout/activity_book_detail.xml" value="0.25" />
         <entry key="..\:/Android_studio_project/Mybookshelf/app/src/main/res/layout/activity_search_books.xml" value="0.41811175337186895" />
         <entry key="..\:/Android_studio_project/Mybookshelf/app/src/main/res/layout/book_info_item.xml" value="0.28856382978723405" />
         <entry key="..\:/Android_studio_project/Mybookshelf/app/src/main/res/layout/books_load_state_footer_view_item.xml" value="0.67" />
