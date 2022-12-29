@@ -8,4 +8,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="cursor_input_layout_search_book">#E6E6E6</color>
+    <color name="book_detail_text_color">#CCCCCC</color>
+    <color name="book_detail_main_background_color">#2C2C2C</color>
+    <color name="search_book_main_background_color">#0B0B0B</color>
+    <color name="hint_text_color">#7A7A7A</color>
+    <color name="text_color">#E6E6E6</color>
+    <color name="text_color_hint">#5A5A5A</color>
+    <color name="ed_text_color">#ECEBEB</color>
+    <color name="view_background">#707070</color>
+    <color name="view_background_tint">#979797</color>
+    <color name="book_info_text_color">#CCCCCC</color>
+    <color name="book_info_background">#3C1F1E</color>
+    <color name="book_info_tint_background">#5A2525</color>
+
 </resources>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
@@ -16,8 +17,10 @@ import com.example.mybookshelf.databinding.ActivitySearchBooksBinding
 import com.example.mybookshelf.model.BookList
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import okhttp3.internal.concurrent.Task
 
 class SearchBooksActivity : AppCompatActivity() {
+    private lateinit var  booksAdapter: BooksAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivitySearchBooksBinding.inflate(layoutInflater)
@@ -29,13 +32,14 @@ class SearchBooksActivity : AppCompatActivity() {
         ).get(SearchBooksViewModel::class.java)
 
         val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        binding.recyclerviewBooks.addItemDecoration(decoration)
+        binding.rvBooks.addItemDecoration(decoration)
 
         binding.bindState(
             uiState = viewModel.state,
             pagingData = viewModel.pagingDataFlow,
             uiActions = viewModel.accept
         )
+        setupItemShortClickListener()
 
     }
 
@@ -44,10 +48,10 @@ class SearchBooksActivity : AppCompatActivity() {
         pagingData: Flow<PagingData<BookList>>,
         uiActions: (UiAction) -> Unit
     ) {
-        val booksAdapter = BooksAdapter()
-        recyclerviewBooks.adapter = booksAdapter.withLoadStateHeaderAndFooter(
-            header = BooksLoadStateAdapter {booksAdapter.retry()},
-            footer = BooksLoadStateAdapter {booksAdapter.retry()}
+        booksAdapter = BooksAdapter()
+        rvBooks.adapter = booksAdapter.withLoadStateHeaderAndFooter(
+            header = BooksLoadStateAdapter { booksAdapter.retry() },
+            footer = BooksLoadStateAdapter { booksAdapter.retry() }
         )
 
         bindSearch(
@@ -93,7 +97,7 @@ class SearchBooksActivity : AppCompatActivity() {
 
                 .distinctUntilChanged()
                 .collect(edSearchBook::setText)
-            Log.d("Querys",uiState.value.query )
+            Log.d("Queries", uiState.value.query)
         }
     }
 
@@ -102,7 +106,7 @@ class SearchBooksActivity : AppCompatActivity() {
     ) {
         edSearchBook.text.trim().let {
             if (it.isNotEmpty()) {
-                recyclerviewBooks.scrollToPosition(0)
+                rvBooks.scrollToPosition(0)
                 onQueryChanged(UiAction.Search(query = it.toString()))
             }
         }
@@ -114,7 +118,7 @@ class SearchBooksActivity : AppCompatActivity() {
         pagingData: Flow<PagingData<BookList>>,
         onScrollChanged: (UiAction.Scroll) -> Unit
     ) {
-        recyclerviewBooks.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        rvBooks.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy != 0) onScrollChanged(UiAction.Scroll(currentQuery = uiState.value.query))
             }
@@ -141,8 +145,18 @@ class SearchBooksActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             shouldScrollToTop.collect { shouldScroll ->
-                if (shouldScroll) recyclerviewBooks.scrollToPosition(0)
+                if (shouldScroll) rvBooks.scrollToPosition(0)
             }
         }
+    }
+
+    private fun setupItemShortClickListener() {
+        booksAdapter.onBookItemClickListener = {
+            val intent = BookDetailActivity.newIntent(this, it.id)
+            Log.d("BooksId", it.id)
+            Toast.makeText(this,"id книги: ${it.id}", Toast.LENGTH_SHORT).show()
+            startActivity(intent)
+        }
+
     }
 }

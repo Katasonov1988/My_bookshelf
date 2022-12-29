@@ -14,14 +14,16 @@ import com.example.mybookshelf.R
 import com.example.mybookshelf.model.BookList
 import com.squareup.picasso.Picasso
 
-class BookViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    private val title: TextView = view.findViewById(R.id.book_title)
-    private val author: TextView = view.findViewById(R.id.book_author)
-    private val publishedDate: TextView = view.findViewById(R.id.book_publication_date)
-    private val description: TextView = view.findViewById(R.id.book_description)
-    private val bookCover: ImageView = view.findViewById(R.id.iv_book_cover)
+class BookViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    val title = view.findViewById<TextView>(R.id.book_title)
+    val author = view.findViewById<TextView>(R.id.book_author)
+    val publishedDate = view.findViewById<TextView>(R.id.book_publication_date)
+    val description = view.findViewById<TextView>(R.id.book_description)
+    val bookCover = view.findViewById<ImageView>(R.id.iv_book_cover)
 
     private var book: BookList? = null
+
+
 
     init {
         view.setOnClickListener {
@@ -29,47 +31,39 @@ class BookViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
     }
 
-    fun bind(book: BookList?) {
-        if (book == null) {
-            val resources = itemView.resources
-            title.text = resources.getString(R.string.loading)
-            description.text = resources.getString(R.string.unknown)
-            author.text = resources.getString(R.string.unknown)
-            publishedDate.text = resources.getString(R.string.unknown)
+//    fun bind(book: BookList?) {
+//        if (book == null) {
+//            val resources = itemView.resources
+//            title.text = resources.getString(R.string.loading)
+//            description.text = resources.getString(R.string.unknown)
+//            author.text = resources.getString(R.string.unknown)
+//            publishedDate.text = resources.getString(R.string.unknown)
+//
+//        } else {
+//            showBookData(book)
+//        }
+//    }
 
-        } else {
-            showBookData(book)
-        }
-    }
-
-    private fun showBookData(book: BookList) {
-        this.book = book
-        Log.d("ShowBook",book.id.toString())
-
-        title.text = book.volumeInfo.title
-
-
-        description.text = book.volumeInfo.description
-        var text = ""
-        if (book.volumeInfo.authors !=null) {
-            for (i in book.volumeInfo.authors.indices ) {
-                text = text.plus(book.volumeInfo.authors[i] + " ")
-            }
-            author.text = text
-        } else {
-            author.text = "неизвестный автор"
-        }
-
-        publishedDate.text = book.volumeInfo.publishedDate
-      Picasso.get().load(book.volumeInfo.imageLinks?.thumbnail).into(bookCover)
-
-    }
-
-    companion object {
-        fun create(parent: ViewGroup): BookViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.book_info_item, parent, false)
-            return BookViewHolder(view)
-        }
-    }
+//    private fun showBookData(book: BookList) {
+//        this.book = book
+//        Log.d("ShowBook",book.id.toString())
+//
+//        title.text = book.volumeInfo.title
+//
+//
+//        description.text = book.volumeInfo.description
+//        var text = ""
+//        if (book.volumeInfo.authors !=null) {
+//            for (i in book.volumeInfo.authors.indices ) {
+//                text = text.plus(book.volumeInfo.authors[i] + " ")
+//            }
+//            author.text = text
+//        } else {
+//            author.text = "неизвестный автор"
+//        }
+//
+//        publishedDate.text = book.volumeInfo.publishedDate
+//      Picasso.get().load(book.volumeInfo.imageLinks?.thumbnail).into(bookCover)
+//
+//    }
 }
