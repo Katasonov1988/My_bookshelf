@@ -1,6 +1,7 @@
-package com.example.mybookshelf.api
+package com.example.mybookshelf.data.network
 
-import com.example.mybookshelf.model.BookDetail
+import com.example.mybookshelf.data.model.BookInfoListOfData
+import com.example.mybookshelf.data.model.BookDetail
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,8 +19,8 @@ interface GoogleapisService {
     @GET("volumes")
     suspend fun getBookList(
         @Query(QUERY_Q) q: String,
-        @Query(START_INDEX_PARAM) page: Int = 0,
-        @Query(MAX_RESULTS_PARAM) itemsPerPage: Int = 10,
+        @Query(START_INDEX_PARAM) page: Int = START_INDEX,
+        @Query(MAX_RESULTS_PARAM) itemsPerPage: Int = MAX_RESULTS,
         @Query(QUERY_PARAM_API_KEY) key: String = API_KEY
     ): BookInfoListOfData
 
@@ -58,10 +59,6 @@ interface GoogleapisService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(GoogleapisService::class.java)
-
-
         }
-
     }
-
 }

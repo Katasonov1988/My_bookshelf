@@ -1,14 +1,15 @@
-package com.example.mybookshelf.ui
+package com.example.mybookshelf.ui.search_books
 
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import com.example.mybookshelf.data.GoogleapisRepository
+import com.example.mybookshelf.data.repository.GoogleapisRepositoryImpl
+import com.example.mybookshelf.ui.SearchBooksViewModel
 
 class ViewModelFactory (
     owner: SavedStateRegistryOwner,
-    private val repository: GoogleapisRepository
+    private val repository: GoogleapisRepositoryImpl
 ): AbstractSavedStateViewModelFactory(owner, null) {
 
     override fun <T : ViewModel?> create(

@@ -1,4 +1,4 @@
-package com.example.mybookshelf.ui
+package com.example.mybookshelf.ui.search_books
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,13 +14,20 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mybookshelf.Injection
 import com.example.mybookshelf.databinding.ActivitySearchBooksBinding
-import com.example.mybookshelf.model.BookList
+import com.example.mybookshelf.data.model.BookList
+import com.example.mybookshelf.ui.SearchBooksViewModel
+import com.example.mybookshelf.ui.UiAction
+import com.example.mybookshelf.ui.UiState
+import com.example.mybookshelf.ui.book_detail.BookDetailActivity
+import com.example.mybookshelf.ui.search_books.list.BooksAdapter
+import com.example.mybookshelf.ui.search_books.list.BooksLoadStateAdapter
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import okhttp3.internal.concurrent.Task
 
 class SearchBooksActivity : AppCompatActivity() {
-    private lateinit var  booksAdapter: BooksAdapter
+
+    private lateinit var booksAdapter: BooksAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivitySearchBooksBinding.inflate(layoutInflater)
@@ -86,15 +93,11 @@ class SearchBooksActivity : AppCompatActivity() {
                 false
             }
         }
-
         lifecycleScope.launch {
             uiState
                 .map {
                     it.query
-
-
                 }
-
                 .distinctUntilChanged()
                 .collect(edSearchBook::setText)
             Log.d("Queries", uiState.value.query)
@@ -154,7 +157,7 @@ class SearchBooksActivity : AppCompatActivity() {
         booksAdapter.onBookItemClickListener = {
             val intent = BookDetailActivity.newIntent(this, it.id)
             Log.d("BooksId", it.id)
-            Toast.makeText(this,"id книги: ${it.id}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "id книги: ${it.id}", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }
 
