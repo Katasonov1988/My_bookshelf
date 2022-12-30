@@ -1,10 +1,10 @@
 package com.example.mybookshelf.domain
 
-import com.example.mybookshelf.data.model.ImageLinks
+import com.example.mybookshelf.data.model.ImageLinksDto
 
 data class DetailBookItem(
     val bookId: String,
-    val imageLinks: ImageLinks,
+    val imageLinks: String,
     val title: String,
     val authors: String,
     val publishedDate: String?,

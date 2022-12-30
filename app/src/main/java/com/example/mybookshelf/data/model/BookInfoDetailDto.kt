@@ -2,7 +2,7 @@ package com.example.mybookshelf.data.model
 import com.google.gson.annotations.SerializedName
 
 
-data class BookInfoDetail(
+data class BookInfoDetailDto(
     @field:SerializedName("title") val title: String,
     @field:SerializedName("subtitle") val subtitle: String,
     @field:SerializedName("authors") val authors: List<String>,
@@ -10,7 +10,7 @@ data class BookInfoDetail(
     @field:SerializedName("description") val description: String,
     @field:SerializedName("pageCount") val pageCount: Int,
     @field:SerializedName("maturityRating") val maturityRatin: String,
-    @SerializedName("imageLinks") val imageLinksDetail: ImageLinksDetail,
+    @SerializedName("imageLinks") val imageLinksDetail: ImageLinksDetailDto,
     @field:SerializedName("language") val language: String,
     @field:SerializedName("previewLink") val previewLink: String,
     @field:SerializedName("infoLink") val infoLink: String

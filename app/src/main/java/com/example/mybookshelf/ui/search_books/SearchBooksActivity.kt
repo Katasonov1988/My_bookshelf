@@ -14,7 +14,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mybookshelf.Injection
 import com.example.mybookshelf.databinding.ActivitySearchBooksBinding
-import com.example.mybookshelf.data.model.BookList
+import com.example.mybookshelf.data.model.BookListDto
+import com.example.mybookshelf.domain.model.BookList
 import com.example.mybookshelf.ui.SearchBooksViewModel
 import com.example.mybookshelf.ui.UiAction
 import com.example.mybookshelf.ui.UiState

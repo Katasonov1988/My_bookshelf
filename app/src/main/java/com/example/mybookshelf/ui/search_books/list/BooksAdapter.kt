@@ -5,7 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.mybookshelf.R
-import com.example.mybookshelf.data.model.BookList
+import com.example.mybookshelf.data.model.BookListDto
+import com.example.mybookshelf.domain.model.BookList
 import com.squareup.picasso.Picasso
 
 class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR) {
