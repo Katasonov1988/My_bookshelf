@@ -3,6 +3,7 @@ package com.example.mybookshelf.data.network
 import com.example.mybookshelf.data.model.BookInfoListOfDataDto
 import com.example.mybookshelf.data.model.BookDetailDto
 import okhttp3.OkHttpClient
+import retrofit2.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/book_icon"
-        android:scaleType="centerCrop"
+        android:scaleType="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
@@ -142,32 +142,6 @@
         app:layout_constraintStart_toEndOf="@+id/tv_icon_language"
         app:layout_constraintTop_toBottomOf="@+id/tv_page_count"
         tools:text="русский" />
-
-    <TextView
-        android:id="@+id/tv_icon_info_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:paddingEnd="@dimen/book_detail_padding_one"
-        android:text="@string/outside_info_link"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_icon_language" />
-
-    <TextView
-        android:id="@+id/tv_infoLink"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:textAlignment="textStart"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_icon_info_link"
-        tools:text="https://ilibrkmlkary.ru/text/436/index.html" />
 
     <TextView
         android:id="@+id/tv_icon_description"
