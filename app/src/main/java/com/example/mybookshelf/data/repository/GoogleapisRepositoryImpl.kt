@@ -22,27 +22,11 @@ class GoogleapisRepositoryImpl(private val googleapisService: GoogleapisService)
                 BookPagingSource(googleapisService, query)
             }
         ).flow
-
     }
 
     override suspend fun getDetailBookInfo(bookId: String): BookDetailItem {
-
-//        return try {
-           return googleapisService.getDetailBookInfo(bookId).toBookDetailItem()
-
-
-
-//        } catch (exception: IOException) {
-//
-//            return PagingSource.LoadResult.Error(exception)
-//        } catch (exception: HttpException) {
-//
-//            return PagingSource.LoadResult.Error(exception)
-//        }
-
-
+        return googleapisService.getDetailBookInfo(bookId).toBookDetailItem()
     }
-
 
     companion object {
         const val NETWORK_PAGE_SIZE = 10

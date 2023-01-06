@@ -3,7 +3,6 @@ package com.example.mybookshelf.data.network
 import com.example.mybookshelf.data.model.BookInfoListOfDataDto
 import com.example.mybookshelf.data.model.BookDetailDto
 import okhttp3.OkHttpClient
-import retrofit2.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -26,7 +25,7 @@ interface GoogleapisService {
     ): BookInfoListOfDataDto
 
 //    детальный вывод по книге
-    //    https://www.googleapis.com/books/v1/volumes/volumeId
+    // https://www.googleapis.com/books/v1/volumes/volumeId
 //    https://www.googleapis.com/books/v1/volumes/8Pr_kLFxciYC?AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE
 //    https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE
 

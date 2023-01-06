@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.mybookshelf.Injection
+import com.example.mybookshelf.R
 import com.example.mybookshelf.databinding.ActivityBookDetailBinding
 import com.squareup.picasso.Picasso
 
@@ -39,12 +40,14 @@ class BookDetailActivity : AppCompatActivity() {
                 tvPageCount.text = it.pageCount.toString()
                 tvLanguage.text = it.language
                 tvDescription.text = it.description
-                Picasso.get().load(it.imageLinks?.small).into(ivCoverBook)
+                if  (it.imageLinks?.small == null) {
+                    ivCoverBook.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
+                } else {
+                    Picasso.get().load(it.imageLinks.small).into(ivCoverBook)
+                }
+
             }
-
         }
-
-
 
     }
 

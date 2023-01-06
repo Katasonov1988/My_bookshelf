@@ -6,15 +6,16 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mybookshelf.Injection
 import com.example.mybookshelf.databinding.ActivitySearchBooksBinding
-import com.example.mybookshelf.data.model.BookListDto
 import com.example.mybookshelf.domain.model.BookList
 import com.example.mybookshelf.ui.SearchBooksViewModel
 import com.example.mybookshelf.ui.UiAction
@@ -48,6 +49,13 @@ class SearchBooksActivity : AppCompatActivity() {
             uiActions = viewModel.accept
         )
         setupItemShortClickListener()
+
+        booksAdapter.addLoadStateListener { state ->
+            with (binding) {
+                rvBooks.isVisible = state.refresh != LoadState.Loading
+                progress.isVisible = state.refresh == LoadState.Loading
+            }
+        }
 
     }
 

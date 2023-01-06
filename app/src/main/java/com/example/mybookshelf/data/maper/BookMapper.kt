@@ -49,7 +49,7 @@ private fun ImageLinksDto.toImageLinks(): ImageLinks {
     )
 }
 
-private fun listAuthorsToString (list: List<String>?): String {
+private fun listAuthorsToString(list: List<String>?): String {
     var text = EMPTY_TEXT
     if (list != null) {
         for (i in list.indices) {

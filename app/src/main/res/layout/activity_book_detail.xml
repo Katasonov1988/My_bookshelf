@@ -29,6 +29,7 @@
         android:contentDescription="@string/book_icon"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -140,30 +141,19 @@
             tools:text="русский" />
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/tv_icon_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:text="@string/description"
-        android:textColor="@color/book_detail_text_color"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_cover_book" />
-
     <TextView
         android:id="@+id/tv_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/book_detail_padding"
         android:paddingEnd="@dimen/book_detail_padding"
+        android:paddingTop="16dp"
         android:textAlignment="textStart"
         android:textColor="@color/book_detail_text_color"
         android:textSize="@dimen/book_detail_text_size"
         app:layout_constraintStart_toStartOf="parent"
         android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@+id/tv_icon_description"
+        app:layout_constraintTop_toBottomOf="@+id/iv_cover_book"
         tools:text="
     «Мой дядя самых честных правил,
     Когда не в шутку занемог,

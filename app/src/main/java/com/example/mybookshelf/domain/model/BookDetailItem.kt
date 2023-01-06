@@ -1,7 +1,5 @@
 package com.example.mybookshelf.domain.model
 
-import com.example.mybookshelf.data.model.ImageLinksDto
-
 data class BookDetailItem(
     val bookId: String,
     val imageLinks: ImageLinks?,
