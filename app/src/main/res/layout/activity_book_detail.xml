@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/book_detail_main_background_color"
+    android:background="@color/blue_grey"
     android:padding="@dimen/book_detail_padding"
     tools:context=".ui.book_detail.BookDetailActivity">
 
@@ -45,112 +45,96 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="match_parent"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="3"
             android:ellipsize="end"
             android:singleLine="false"
             android:paddingStart="@dimen/book_detail_padding"
             android:paddingEnd="@dimen/book_detail_padding"
-            android:textAlignment="textStart"
-            android:textColor="@color/book_detail_text_color"
-            android:textSize="@dimen/book_detail_text_size_main"
-            android:textStyle="bold"
             tools:text="Евгений Онегин" />
 
         <TextView
             android:id="@+id/tv_authors"
-            android:layout_width="match_parent"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="3"
             android:ellipsize="end"
             android:paddingStart="@dimen/book_detail_padding"
             android:paddingEnd="@dimen/book_detail_padding"
-            android:textAlignment="textStart"
-            android:textColor="@color/book_detail_text_color"
-            android:textSize="@dimen/book_detail_text_size_main"
-            android:textStyle="bold"
             tools:text="Пушкин" />
 
         <TextView
             android:id="@+id/tv_icon_published_date"
+            style="@style/Widget.MyBookshelf.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/book_detail_padding"
             android:paddingEnd="@dimen/book_detail_padding_one"
             android:text="@string/published_date"
-            android:textAlignment="textStart"
-            android:textColor="@color/book_detail_text_color"
-            android:textSize="@dimen/book_detail_text_size"
             android:textStyle="italic" />
 
         <TextView
             android:id="@+id/tv_published_date"
+            style="@style/Widget.MyBookshelf.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:paddingStart="@dimen/book_detail_padding"
             android:paddingEnd="@dimen/book_detail_padding_one"
-            android:textColor="@color/book_detail_text_color"
-            android:textSize="@dimen/book_detail_text_size"
             tools:text="1892" />
 
         <TextView
             android:id="@+id/tv_icon_page_count"
+            style="@style/Widget.MyBookshelf.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/book_detail_padding"
             android:paddingEnd="@dimen/book_detail_padding_one"
             android:text="@string/page_count"
-            android:textAlignment="textStart"
-            android:textColor="@color/book_detail_text_color"
-            android:textSize="@dimen/book_detail_text_size"
             android:textStyle="italic" />
 
         <TextView
             android:id="@+id/tv_page_count"
+            style="@style/Widget.MyBookshelf.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:paddingStart="@dimen/book_detail_padding"
             android:paddingEnd="@dimen/book_detail_padding_one"
-            android:textColor="@color/book_detail_text_color"
-            android:textSize="@dimen/book_detail_text_size"
             tools:text="400" />
 
         <TextView
             android:id="@+id/tv_icon_language"
+            style="@style/Widget.MyBookshelf.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/book_detail_padding"
             android:paddingEnd="@dimen/book_detail_padding_one"
             android:text="@string/language"
-            android:textColor="@color/book_detail_text_color"
-            android:textSize="@dimen/book_detail_text_size"
             android:textStyle="italic" />
 
         <TextView
             android:id="@+id/tv_language"
+            style="@style/Widget.MyBookshelf.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:paddingStart="@dimen/book_detail_padding"
             android:paddingEnd="@dimen/book_detail_padding_one"
-            android:textColor="@color/book_detail_text_color"
-            android:textSize="@dimen/book_detail_text_size"
             tools:text="русский" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_description"
+        style="@style/Widget.MyBookshelf.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/book_detail_padding"
         android:paddingEnd="@dimen/book_detail_padding"
         android:paddingTop="16dp"
-        android:textAlignment="textStart"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
         app:layout_constraintStart_toStartOf="parent"
         android:ellipsize="end"
         app:layout_constraintTop_toBottomOf="@+id/iv_cover_book"

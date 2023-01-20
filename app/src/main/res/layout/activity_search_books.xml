@@ -4,21 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/search_book_main_background_color"
+    android:background="@color/blue_grey"
     tools:context=".ui.search_books.SearchBooksActivity">
+
+    <ImageView
+        android:id="@+id/icon_search_book"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:importantForAccessibility="no"
+        app:layout_constraintTop_toTopOf="@+id/til_search_book"
+        app:layout_constraintBottom_toBottomOf="@+id/til_search_book"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/icon_search_book"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_search_book"
-        style="@style/TextInputLayoutStyle"
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_field_layout_margin"
-        android:background="@color/search_book_main_background_color"
+        android:layout_marginStart="8dp"
+        android:background="@color/blue_grey"
         android:textColor="@color/text_color"
         android:textColorHint="@color/text_color_hint"
         app:hintTextColor="@color/hint_text_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon_search_book"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
@@ -33,21 +46,9 @@
             android:textCursorDrawable="@color/cursor_input_layout_search_book"
             app:boxStrokeColor="@color/hint_text_color"
             app:boxStrokeWidth="@dimen/box_stroke_width"
-            tools:text="Онегин" />
+            tools:text="Онегин"
+            android:autofillHints="" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <View
-        android:id="@+id/view_activity_search_note"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/view_background"
-        android:backgroundTint="@color/view_background_tint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_search_book" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_books"
@@ -61,7 +62,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_activity_search_note"
+        app:layout_constraintTop_toBottomOf="@+id/til_search_book"
         tools:ignore="UnusedAttribute"
         tools:listitem="@layout/book_info_item" />
 
