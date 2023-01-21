@@ -1,10 +1,13 @@
 package com.example.mybookshelf.ui.search_books
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -50,7 +53,7 @@ class SearchBooksActivity : AppCompatActivity() {
         setupItemShortClickListener()
 
         booksAdapter.addLoadStateListener { state ->
-            with (binding) {
+            with(binding) {
                 rvBooks.isVisible = state.refresh != LoadState.Loading
                 progress.isVisible = state.refresh == LoadState.Loading
             }
@@ -93,9 +96,12 @@ class SearchBooksActivity : AppCompatActivity() {
                 false
             }
         }
-        edSearchBook.setOnKeyListener { _, keyCode, event ->
+        edSearchBook.setOnKeyListener { view, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 updateBookListFromInput(onQueryChanged)
+                inputMethodManager(view)
+
+
                 true
             } else {
                 false
@@ -170,4 +176,11 @@ class SearchBooksActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun inputMethodManager(view: View) {
+        val inputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 }
