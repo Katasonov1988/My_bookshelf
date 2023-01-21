@@ -28,7 +28,6 @@ fun getBookDetaiItem(bookId: String) {
     viewModelScope.launch {
         try {
           val item = getDetailBookUseCase.getDetailBookInfo(bookId)
-            Log.d("BookItemInfo", item.toString())
             _bookItem.value = item
         } catch (e: IOException) {
             Log.d("BookItemInfo", "IOException response $e")

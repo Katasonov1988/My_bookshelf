@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Widget.MyBookshelf.TextView" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/book_info_text_color</item>
         <item name="android:textStyle">bold</item>

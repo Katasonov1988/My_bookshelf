@@ -165,7 +165,7 @@ class SearchBooksActivity : AppCompatActivity() {
         booksAdapter.onBookItemClickListener = {
             val intent = BookDetailActivity.newIntent(this, it.id)
             Log.d("BooksId", it.id)
-            Toast.makeText(this, "id книги: ${it.id}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "id книги: ${it.id}", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }
 

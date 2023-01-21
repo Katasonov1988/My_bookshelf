@@ -93,4 +93,4 @@ data class UiState(
 
 private const val LAST_SEARCH_QUERY: String = "last_search_query"
 private const val LAST_QUERY_SCROLLED: String = "last_query_scrolled"
-private const val DEFAULT_QUERY = "Толстой"
+private const val DEFAULT_QUERY = ""
