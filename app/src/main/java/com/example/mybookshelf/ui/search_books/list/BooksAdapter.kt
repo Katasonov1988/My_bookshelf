@@ -1,19 +1,14 @@
-package com.example.mybookshelf.ui
+package com.example.mybookshelf.ui.search_books.list
 
-import android.provider.Settings.Global.getString
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.TypedArrayUtils.getString
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.mybookshelf.R
-import com.example.mybookshelf.model.BookList
+import com.example.mybookshelf.data.model.BookList
 import com.squareup.picasso.Picasso
 
 class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR) {
-
     var onBookItemClickListener: ((BookList) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -26,11 +21,14 @@ class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         val bookItem = getItem(position)
         if (bookItem == null) {
-            val resources =  holder.itemView.resources
-            holder.title.text = resources.getString(R.string.loading)
-            holder.description.text = resources.getString(R.string.unknown)
-            holder.author.text = resources.getString(R.string.unknown)
-            holder.publishedDate.text = resources.getString(R.string.unknown)
+            val resources = holder.itemView.resources
+            with(holder) {
+                title.text = resources.getString(R.string.loading)
+                description.text = resources.getString(R.string.unknown)
+                author.text = resources.getString(R.string.unknown)
+                publishedDate.text = resources.getString(R.string.unknown)
+            }
+
         } else {
             with(holder) {
                 title.text = bookItem.volumeInfo.title
@@ -51,17 +49,12 @@ class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR
 
         }
 
-//        if (bookItem = null) {
-//            holder.bind(bookItem)
-//        }
-
         holder.view.setOnClickListener {
             if (bookItem != null)
                 onBookItemClickListener?.invoke(bookItem)
         }
 
     }
-
 
     companion object {
         private val BOOK_COMPARATOR = object : DiffUtil.ItemCallback<BookList>() {
@@ -72,7 +65,4 @@ class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR
                 oldItem == newItem
         }
     }
-
-
-
 }

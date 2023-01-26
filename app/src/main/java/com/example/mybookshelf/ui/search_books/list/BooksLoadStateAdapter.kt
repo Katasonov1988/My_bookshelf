@@ -1,4 +1,4 @@
-package com.example.mybookshelf.ui
+package com.example.mybookshelf.ui.search_books.list
 
 import android.view.ViewGroup
 import androidx.paging.LoadState
@@ -11,6 +11,6 @@ class BooksLoadStateAdapter (private val retry: () -> Unit): LoadStateAdapter<Bo
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): BooksLoadStateViewHolder {
-        return BooksLoadStateViewHolder.create(parent,retry)
+        return BooksLoadStateViewHolder.create(parent, retry)
     }
 }

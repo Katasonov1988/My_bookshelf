@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/book_detail_main_background_color"
     android:padding="@dimen/book_detail_padding"
-    tools:context=".ui.BookDetailActivity">
+    tools:context=".ui.book_detail.BookDetailActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

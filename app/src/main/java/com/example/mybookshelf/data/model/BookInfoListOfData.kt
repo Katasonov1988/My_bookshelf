@@ -1,6 +1,5 @@
-package com.example.mybookshelf.api
+package com.example.mybookshelf.data.model
 
-import com.example.mybookshelf.model.BookList
 import com.google.gson.annotations.SerializedName
 
 data class BookInfoListOfData(

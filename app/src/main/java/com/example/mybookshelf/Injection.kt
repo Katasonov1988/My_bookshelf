@@ -2,13 +2,13 @@ package com.example.mybookshelf
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.savedstate.SavedStateRegistryOwner
-import com.example.mybookshelf.api.GoogleapisService
-import com.example.mybookshelf.data.GoogleapisRepository
-import com.example.mybookshelf.ui.ViewModelFactory
+import com.example.mybookshelf.data.network.GoogleapisService
+import com.example.mybookshelf.data.repository.GoogleapisRepositoryImpl
+import com.example.mybookshelf.ui.search_books.ViewModelFactory
 
 object Injection {
-    private fun provideBookRepository(): GoogleapisRepository {
-        return GoogleapisRepository(GoogleapisService.create())
+    private fun provideBookRepository(): GoogleapisRepositoryImpl {
+        return GoogleapisRepositoryImpl(GoogleapisService.create())
     }
 
     fun provideViewModelFactory(owner: SavedStateRegistryOwner): ViewModelProvider.Factory {

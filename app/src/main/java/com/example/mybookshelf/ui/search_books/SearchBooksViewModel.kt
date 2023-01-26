@@ -5,13 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.mybookshelf.data.GoogleapisRepository
-import com.example.mybookshelf.model.BookList
+import com.example.mybookshelf.data.repository.GoogleapisRepositoryImpl
+import com.example.mybookshelf.data.model.BookList
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class SearchBooksViewModel (
-    private val repository: GoogleapisRepository,
+    private val repository: GoogleapisRepositoryImpl,
     private val savedStateHandle: SavedStateHandle
         ) : ViewModel() {
 
@@ -65,8 +65,6 @@ class SearchBooksViewModel (
             }
 
         }
-
-
 
     private fun searchBook (queryString: String): Flow<PagingData<BookList>> =
         repository.getSearchResultStream (queryString)

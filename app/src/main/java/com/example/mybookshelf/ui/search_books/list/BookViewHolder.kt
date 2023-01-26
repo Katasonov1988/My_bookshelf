@@ -1,18 +1,10 @@
-package com.example.mybookshelf.ui
+package com.example.mybookshelf.ui.search_books.list
 
-import android.content.Intent
-import android.net.Uri
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mybookshelf.R
-import com.example.mybookshelf.model.BookList
-import com.squareup.picasso.Picasso
 
 class BookViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     val title = view.findViewById<TextView>(R.id.book_title)
@@ -21,15 +13,14 @@ class BookViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     val description = view.findViewById<TextView>(R.id.book_description)
     val bookCover = view.findViewById<ImageView>(R.id.iv_book_cover)
 
-    private var book: BookList? = null
+//    private var book: BookList? = null
 
 
-
-    init {
-        view.setOnClickListener {
-            Toast.makeText(it.context, "нажата ${it.id}", Toast.LENGTH_SHORT).show()
-        }
-    }
+//    init {
+//        view.setOnClickListener {
+//            Toast.makeText(it.context, "нажата ${it.id}", Toast.LENGTH_SHORT).show()
+//        }
+//    }
 
 //    fun bind(book: BookList?) {
 //        if (book == null) {

@@ -1,14 +1,12 @@
-package com.example.mybookshelf.ui
+package com.example.mybookshelf.ui.search_books.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.ViewParent
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mybookshelf.R
 import com.example.mybookshelf.databinding.BooksLoadStateFooterViewItemBinding
-import kotlin.concurrent.fixedRateTimer
 
 class BooksLoadStateViewHolder (
     private val binding: BooksLoadStateFooterViewItemBinding,
@@ -31,7 +29,6 @@ class BooksLoadStateViewHolder (
             errorMsg.isVisible = loadState is LoadState.Error
         }
     }
-
 
     companion object {
         fun create(parent: ViewGroup, retry: () -> Unit): BooksLoadStateViewHolder {
