@@ -1,10 +1,8 @@
 package com.example.mybookshelf.model
 
-import com.example.mybookshelf.model.BookInfo
 import com.google.gson.annotations.SerializedName
 
-data class BookList(
+data class BookDetail(
     @field:SerializedName("id") val id: String,
-    @SerializedName("volumeInfo") val volumeInfo: BookInfo
-
-    )
+    @SerializedName("volumeInfo") val bookInfoDetail: BookInfoDetail,
+)

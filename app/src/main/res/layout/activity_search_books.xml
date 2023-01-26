@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0B0B0B"
+    android:background="@color/search_book_main_background_color"
     tools:context=".ui.SearchBooksActivity">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -12,58 +12,57 @@
         style="@style/TextInputLayoutStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:textColor="#E6E6E6"
-        android:background="#0B0B0B"
-        app:hintTextColor="#7A7A7A"
-        android:textColorHint="#5A5A5A"
+        android:layout_margin="@dimen/text_field_layout_margin"
+        android:background="@color/search_book_main_background_color"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color_hint"
+        app:hintTextColor="@color/hint_text_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <EditText
             android:id="@+id/ed_search_book"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="поиск вашей книги"
+            android:hint="@string/search_your_book"
             android:imeOptions="actionSearch"
             android:inputType="textNoSuggestions"
             android:selectAllOnFocus="true"
-            android:textColor="#ECEBEB"
-            app:boxStrokeColor="#7A7A7A"
-            app:boxStrokeWidth="1dp"
+            android:textColor="@color/ed_text_color"
             android:textCursorDrawable="@color/cursor_input_layout_search_book"
+            app:boxStrokeColor="@color/hint_text_color"
+            app:boxStrokeWidth="@dimen/box_stroke_width"
             tools:text="Онегин" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <View
-        android:id="@+id/viewLineActivitySearchNote"
+        android:id="@+id/view_activity_search_note"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:background="#707070"
-        android:backgroundTint="#979797"
+        android:background="@color/view_background"
+        android:backgroundTint="@color/view_background_tint"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_search_book"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/til_search_book" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerviewBooks"
+        android:id="@+id/rv_books"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewLineActivitySearchNote"
+        app:layout_constraintTop_toBottomOf="@+id/view_activity_search_note"
         tools:ignore="UnusedAttribute"
-        tools:listitem="@layout/book_info_item"
-        />
+        tools:listitem="@layout/book_info_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,4 @@ data class BookInfo (
     @field:SerializedName("publishedDate") val publishedDate: String?,
     @field:SerializedName("description") val description: String?,
     @SerializedName("imageLinks") val imageLinks: ImageLinks?
-//    @SerializedName("imageLinks") val imageLinks: ImageLinksDto? = null
-
-
 )

@@ -1,10 +1,12 @@
 package com.example.mybookshelf.api
 
+import com.example.mybookshelf.model.BookDetail
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface GoogleapisService {
@@ -20,6 +22,17 @@ interface GoogleapisService {
         @Query(MAX_RESULTS_PARAM) itemsPerPage: Int = 10,
         @Query(QUERY_PARAM_API_KEY) key: String = API_KEY
     ): BookInfoListOfData
+
+//    детальный вывод по книге
+    //    https://www.googleapis.com/books/v1/volumes/volumeId
+//    https://www.googleapis.com/books/v1/volumes/8Pr_kLFxciYC?AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE
+//    https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE
+
+    @GET("volumes/{volumeId}")
+    suspend fun getDetailBookInfo(
+        @Path("volumeId") volumeId: String,
+        @Query(QUERY_PARAM_API_KEY) key: String = API_KEY
+    ): BookDetail
 
     companion object {
         private const val API_KEY = "AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE"
@@ -39,7 +52,7 @@ interface GoogleapisService {
             val client = OkHttpClient.Builder()
                 .addInterceptor(logger)
                 .build()
-            return  Retrofit.Builder()
+            return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
