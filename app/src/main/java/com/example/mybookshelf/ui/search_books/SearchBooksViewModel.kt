@@ -6,7 +6,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.mybookshelf.data.repository.GoogleapisRepositoryImpl
-import com.example.mybookshelf.data.model.BookList
+import com.example.mybookshelf.data.model.BookListDto
+import com.example.mybookshelf.domain.model.BookList
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
