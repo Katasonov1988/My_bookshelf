@@ -1,13 +1,11 @@
 package com.example.mybookshelf.data.repository
 
 import android.util.Log
-import android.widget.Toast
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.mybookshelf.data.maper.toBookList
 import com.example.mybookshelf.data.network.GoogleapisService
 import com.example.mybookshelf.data.repository.GoogleapisRepositoryImpl.Companion.NETWORK_PAGE_SIZE
-import com.example.mybookshelf.data.model.BookListDto
 import com.example.mybookshelf.domain.model.BookList
 import retrofit2.HttpException
 import java.io.IOException
@@ -42,8 +40,7 @@ class BookPagingSource(
             Log.d("ShowBook", "response $exception")
             return LoadResult.Error(exception)
         } catch (exception: HttpException) {
-
-            Log.d("ShowBook", "response $exception")
+            Log.d("ShowBook", "responseses $exception")
             return LoadResult.Error(exception)
         }
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/book_detail_main_background_color"
+    android:background="@color/blue_grey"
     android:padding="@dimen/book_detail_padding"
     tools:context=".ui.book_detail.BookDetailActivity">
 
@@ -13,184 +13,131 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="137dp" />
+        app:layout_constraintGuide_begin="196dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="183dp" />
+        app:layout_constraintGuide_begin="247dp" />
 
     <ImageView
         android:id="@+id/iv_cover_book"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/book_icon"
-        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:paddingEnd="@dimen/book_detail_padding"
-        android:textAlignment="textStart"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size_main"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Евгений Онегин" />
-
-    <TextView
-        android:id="@+id/tv_authors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="3"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:paddingEnd="@dimen/book_detail_padding"
-        android:textAlignment="textStart"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size_main"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        tools:text="Пушкин" />
-
-    <TextView
-        android:id="@+id/tv_icon_published_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:paddingEnd="@dimen/book_detail_padding_one"
-        android:text="@string/published_date"
-        android:textAlignment="textStart"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_authors" />
-
-    <TextView
-        android:id="@+id/tv_published_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:paddingStart="@dimen/book_detail_padding_one"
-        android:paddingEnd="@dimen/book_detail_padding"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
-        app:layout_constraintStart_toEndOf="@+id/tv_icon_published_date"
-        app:layout_constraintTop_toBottomOf="@+id/tv_authors"
-        tools:text="1892" />
-
-    <TextView
-        android:id="@+id/tv_icon_page_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:paddingEnd="@dimen/book_detail_padding_one"
-        android:text="@string/page_count"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_icon_published_date" />
-
-    <TextView
-        android:id="@+id/tv_page_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:paddingStart="@dimen/book_detail_padding_one"
-        android:paddingEnd="@dimen/book_detail_padding"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
-        app:layout_constraintStart_toEndOf="@+id/tv_icon_page_count"
-        app:layout_constraintTop_toBottomOf="@+id/tv_published_date"
-        tools:text="400" />
-
-    <TextView
-        android:id="@+id/tv_icon_language"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:paddingEnd="@dimen/book_detail_padding_one"
-        android:text="@string/language"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_icon_page_count" />
-
-    <TextView
-        android:id="@+id/tv_language"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:paddingStart="@dimen/book_detail_padding_one"
-        android:paddingEnd="@dimen/book_detail_padding"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
-        app:layout_constraintStart_toEndOf="@+id/tv_icon_language"
-        app:layout_constraintTop_toBottomOf="@+id/tv_page_count"
-        tools:text="русский" />
-
-    <TextView
-        android:id="@+id/tv_icon_info_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:paddingEnd="@dimen/book_detail_padding_one"
-        android:text="@string/outside_info_link"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_icon_language" />
-
-    <TextView
-        android:id="@+id/tv_infoLink"
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:textAlignment="textStart"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_icon_info_link"
-        tools:text="https://ilibrkmlkary.ru/text/436/index.html" />
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/iv_cover_book"
+        app:layout_constraintStart_toEndOf="@id/iv_cover_book">
 
-    <TextView
-        android:id="@+id/tv_icon_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:text="@string/description"
-        android:textColor="@color/book_detail_text_color"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:singleLine="false"
+            android:paddingStart="@dimen/book_detail_padding"
+            android:paddingEnd="@dimen/book_detail_padding"
+            tools:text="Евгений Онегин" />
+
+        <TextView
+            android:id="@+id/tv_authors"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:paddingStart="@dimen/book_detail_padding"
+            android:paddingEnd="@dimen/book_detail_padding"
+            tools:text="Пушкин" />
+
+        <TextView
+            android:id="@+id/tv_icon_published_date"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/book_detail_padding"
+            android:paddingEnd="@dimen/book_detail_padding_one"
+            android:text="@string/published_date"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/tv_published_date"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingStart="@dimen/book_detail_padding"
+            android:paddingEnd="@dimen/book_detail_padding_one"
+            tools:text="1892" />
+
+        <TextView
+            android:id="@+id/tv_icon_page_count"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/book_detail_padding"
+            android:paddingEnd="@dimen/book_detail_padding_one"
+            android:text="@string/page_count"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/tv_page_count"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingStart="@dimen/book_detail_padding"
+            android:paddingEnd="@dimen/book_detail_padding_one"
+            tools:text="400" />
+
+        <TextView
+            android:id="@+id/tv_icon_language"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/book_detail_padding"
+            android:paddingEnd="@dimen/book_detail_padding_one"
+            android:text="@string/language"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/tv_language"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingStart="@dimen/book_detail_padding"
+            android:paddingEnd="@dimen/book_detail_padding_one"
+            tools:text="русский" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_description"
+        style="@style/Widget.MyBookshelf.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/book_detail_padding"
         android:paddingEnd="@dimen/book_detail_padding"
-        android:textAlignment="textStart"
-        android:textColor="@color/book_detail_text_color"
-        android:textSize="@dimen/book_detail_text_size"
+        android:paddingTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_icon_description"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@+id/iv_cover_book"
         tools:text="
     «Мой дядя самых честных правил,
     Когда не в шутку занемог,

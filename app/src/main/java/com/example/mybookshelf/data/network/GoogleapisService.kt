@@ -25,7 +25,7 @@ interface GoogleapisService {
     ): BookInfoListOfDataDto
 
 //    детальный вывод по книге
-    //    https://www.googleapis.com/books/v1/volumes/volumeId
+    // https://www.googleapis.com/books/v1/volumes/volumeId
 //    https://www.googleapis.com/books/v1/volumes/8Pr_kLFxciYC?AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE
 //    https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE
 
