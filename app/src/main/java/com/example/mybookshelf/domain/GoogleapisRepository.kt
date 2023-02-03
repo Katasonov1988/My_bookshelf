@@ -1,8 +1,13 @@
 package com.example.mybookshelf.domain
 
+import androidx.paging.PagingData
+import com.example.mybookshelf.domain.model.BookDetailItem
+import com.example.mybookshelf.domain.model.BookList
+import kotlinx.coroutines.flow.Flow
+
 interface GoogleapisRepository {
 
-    fun getBookList(): List<BookInfoItem>
+    fun getSearchResultStream(query: String): Flow<PagingData<BookList>>
 
-    fun getDetailBookInfo(bookId: String): DetailBookItem
+    suspend fun getDetailBookInfo(bookId: String): BookDetailItem
 }

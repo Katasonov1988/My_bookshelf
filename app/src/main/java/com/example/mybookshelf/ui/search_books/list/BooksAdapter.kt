@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.mybookshelf.R
-import com.example.mybookshelf.data.model.BookList
+import com.example.mybookshelf.domain.model.BookList
 import com.squareup.picasso.Picasso
 
 class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR) {
@@ -44,7 +44,14 @@ class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR
                 }
 
                 publishedDate.text = bookItem.volumeInfo.publishedDate
-                Picasso.get().load(bookItem.volumeInfo.imageLinks?.thumbnail).into(bookCover)
+
+
+
+                if  (bookItem.volumeInfo.imageLinks?.thumbnail == null) {
+                    bookCover.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
+                } else {
+                    Picasso.get().load(bookItem.volumeInfo.imageLinks.thumbnail).into(bookCover)
+                }
             }
 
         }

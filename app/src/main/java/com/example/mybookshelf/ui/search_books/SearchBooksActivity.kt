@@ -1,11 +1,15 @@
 package com.example.mybookshelf.ui.search_books
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
@@ -14,7 +18,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mybookshelf.Injection
 import com.example.mybookshelf.databinding.ActivitySearchBooksBinding
-import com.example.mybookshelf.data.model.BookList
+import com.example.mybookshelf.domain.model.BookList
 import com.example.mybookshelf.ui.SearchBooksViewModel
 import com.example.mybookshelf.ui.UiAction
 import com.example.mybookshelf.ui.UiState
@@ -47,6 +51,13 @@ class SearchBooksActivity : AppCompatActivity() {
             uiActions = viewModel.accept
         )
         setupItemShortClickListener()
+
+        booksAdapter.addLoadStateListener { state ->
+            with(binding) {
+                rvBooks.isVisible = state.refresh != LoadState.Loading
+                progress.isVisible = state.refresh == LoadState.Loading
+            }
+        }
 
     }
 
@@ -85,9 +96,12 @@ class SearchBooksActivity : AppCompatActivity() {
                 false
             }
         }
-        edSearchBook.setOnKeyListener { _, keyCode, event ->
+        edSearchBook.setOnKeyListener { view, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 updateBookListFromInput(onQueryChanged)
+                inputMethodManager(view)
+
+
                 true
             } else {
                 false
@@ -157,9 +171,16 @@ class SearchBooksActivity : AppCompatActivity() {
         booksAdapter.onBookItemClickListener = {
             val intent = BookDetailActivity.newIntent(this, it.id)
             Log.d("BooksId", it.id)
-            Toast.makeText(this, "id книги: ${it.id}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "id книги: ${it.id}", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }
 
     }
+
+    private fun inputMethodManager(view: View) {
+        val inputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 }
