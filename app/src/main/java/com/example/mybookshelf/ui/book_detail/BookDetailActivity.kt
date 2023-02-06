@@ -10,6 +10,7 @@ import com.example.mybookshelf.Injection
 import com.example.mybookshelf.R
 import com.example.mybookshelf.databinding.ActivityBookDetailBinding
 import com.squareup.picasso.Picasso
+import java.lang.IllegalArgumentException
 
 class BookDetailActivity : AppCompatActivity() {
     companion object {
@@ -42,16 +43,18 @@ class BookDetailActivity : AppCompatActivity() {
         viewModel.getBookDetaiItem(bookItemId)
         viewModel.bookItem.observe(this) {
             with(binding) {
-                tvTitle.text = it.title
-                tvAuthors.text = it.authors
-                tvPublishedDate.text = it.publishedDate
-                tvPageCount.text = it.pageCount.toString()
-                tvLanguage.text = it.language
-                tvDescription.text = it.description
+                tvBookDetailTitle.text = it.title
+                tvBookDetailAuthor.text = it.authors
+                tvBookDetailPublishedDate.text =
+                    resources?.getString(R.string.published_date, it.publishedDate)
+                tvBookDetailPageCount.text =
+                    resources?.getString(R.string.page_count, it.pageCount.toString())
+                tvBookDetailLanguage.text = resources?.getString(R.string.language, it.language)
+                tvBookDetailDescription.text = it.description
                 if (it.imageLinks.small == null) {
-                    ivCoverBook.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
+                    ivBookDetailCover.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
                 } else {
-                    Picasso.get().load(it.imageLinks.small).into(ivCoverBook)
+                    Picasso.get().load(it.imageLinks.small).into(ivBookDetailCover)
                 }
             }
         }
@@ -67,13 +70,11 @@ class BookDetailActivity : AppCompatActivity() {
 
     private fun parseIntent() {
         if (!intent.hasExtra(EXTRA_BOOK_ID)) {
-            throw java.lang.IllegalArgumentException("Param extra book id is absent")
+            throw IllegalArgumentException("Param extra book id is absent")
         }
         if (intent.getStringExtra(EXTRA_BOOK_ID) != null) {
             bookItemId = intent.getStringExtra(EXTRA_BOOK_ID).toString()
             Log.d("BookDetail", bookItemId)
         }
     }
-
-
 }

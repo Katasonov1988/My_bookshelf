@@ -7,14 +7,11 @@
     <string name="no_results">No results 😓</string>
     <string name="unknown">\?</string>
     <string name="retry">Retry</string>
-    <string name="books_cover">Обложка книги</string>
-    <string name="book_icon">Обложка книги</string>
-    <string name="published_date">Дата публикации:</string>
-    <string name="page_count">Кол-во страниц:</string>
-    <string name="language">Язык:</string>
-    <string name="outside_info_link">Внешняя ссылка:</string>
-    <string name="description">Описание:</string>
+    <string name="published_date">Дата публикации: %1$s</string>
+    <string name="page_count">Кол-во страниц: %1$s</string>
+    <string name="language">Язык: %1$s</string>
     <string name="search_your_book">поиск вашей книги</string>
     <string name="reload">Повторить</string>
+    <string name="book_icon">Обложка книги</string>
 
 </resources>
