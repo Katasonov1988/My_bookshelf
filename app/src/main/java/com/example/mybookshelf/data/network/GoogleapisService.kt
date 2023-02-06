@@ -12,6 +12,32 @@ import retrofit2.http.Query
 
 interface GoogleapisService {
 
+    companion object {
+        private const val API_KEY = "AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE"
+        private const val QUERY_Q = "q"
+        private const val QUERY_PARAM_API_KEY = "key"
+        private const val MAX_RESULTS_PARAM = "maxResults"
+        private const val MAX_RESULTS = 10
+        private const val START_INDEX_PARAM = "startIndex"
+        private const val START_INDEX = 0
+        private const val BASE_URL = "https://www.googleapis.com/books/v1/"
+        private const val VOLUME_ID = "volumeId"
+        fun create(): GoogleapisService {
+            val logger = HttpLoggingInterceptor()
+            logger.level = HttpLoggingInterceptor.Level.BASIC
+
+            val client = OkHttpClient.Builder()
+                .addInterceptor(logger)
+                .build()
+            return Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(GoogleapisService::class.java)
+        }
+    }
+
     //    поисковый запрос на книги
 //    https://www.googleapis.com/books/v1/volumes?q=Онегин&AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE
     //    https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:пушкин+intitle:онегин
@@ -31,34 +57,7 @@ interface GoogleapisService {
 
     @GET("volumes/{volumeId}")
     suspend fun getDetailBookInfo(
-        @Path("volumeId") volumeId: String,
+        @Path(VOLUME_ID) volumeId: String,
         @Query(QUERY_PARAM_API_KEY) key: String = API_KEY
     ): BookDetailData
-
-    companion object {
-        private const val API_KEY = "AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE"
-        private const val QUERY_Q = "q"
-        private const val QUERY_PARAM_API_KEY = "key"
-
-        private const val MAX_RESULTS_PARAM = "maxResults"
-        private const val MAX_RESULTS = 10
-        private const val START_INDEX_PARAM = "startIndex"
-        private const val START_INDEX = 0
-
-        private const val BASE_URL = "https://www.googleapis.com/books/v1/"
-        fun create(): GoogleapisService {
-            val logger = HttpLoggingInterceptor()
-            logger.level = HttpLoggingInterceptor.Level.BASIC
-
-            val client = OkHttpClient.Builder()
-                .addInterceptor(logger)
-                .build()
-            return Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(GoogleapisService::class.java)
-        }
-    }
 }

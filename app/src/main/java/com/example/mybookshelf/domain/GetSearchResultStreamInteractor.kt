@@ -4,7 +4,7 @@ import androidx.paging.PagingData
 import com.example.mybookshelf.domain.model.BookList
 import kotlinx.coroutines.flow.Flow
 
-class GetSearchResultStreamUseCase(
+class GetSearchResultStreamInteractor(
     private val googleapisRepository: GoogleapisRepository
 ) {
     fun getSearchResultStream(query: String): Flow<PagingData<BookList>> {

@@ -1,15 +1,8 @@
 package com.example.mybookshelf.data.maper
 
-import com.example.mybookshelf.data.model.BookDetailData
-import com.example.mybookshelf.data.model.BookInfoData
-import com.example.mybookshelf.data.model.BookListData
-import com.example.mybookshelf.data.model.ImageLinksData
-import com.example.mybookshelf.domain.model.BookDetailItem
-import com.example.mybookshelf.domain.model.BookList
-import com.example.mybookshelf.domain.model.BookInfo
-import com.example.mybookshelf.domain.model.ImageLinks
+import com.example.mybookshelf.data.model.*
+import com.example.mybookshelf.domain.model.*
 
-private const val EMPTY_TEXT = ""
 private const val SPACE = " "
 
 internal fun BookListData.toBookList(): BookList {
@@ -22,7 +15,7 @@ internal fun BookListData.toBookList(): BookList {
 internal fun BookDetailData.toBookDetailItem(): BookDetailItem {
     return BookDetailItem(
         bookId = id,
-        imageLinks = bookInfoDetail.imageLinks?.toImageLinks(),
+        imageLinks = this.bookInfoDetail.imageLinks.toImageLinksDetail(),
         title = bookInfoDetail.title,
         authors = listAuthorsToString(bookInfoDetail.authors),
         publishedDate = bookInfoDetail.publishedDate,
@@ -38,24 +31,30 @@ private fun BookInfoData.toBookInfo(): BookInfo {
         authors = authors,
         publishedDate = publishedDate,
         description = description,
-        imageLinks = this.imageLinks?.toImageLinks()
+        imageLinks = this.imageLinks.toImageLinks()
     )
 }
 
 private fun ImageLinksData.toImageLinks(): ImageLinks {
     return ImageLinks(
+        smallThumbnail = smallThumbnail,
         thumbnail = thumbnail,
-        small = small
+
+        )
+}
+
+private fun ImageLinksDetailData.toImageLinksDetail(): ImageLinksDetail {
+    return ImageLinksDetail(
+        smallThumbnail = smallThumbnail,
+        thumbnail = thumbnail,
+        small = small,
+        medium = medium,
+        large = large,
+        extraLarge = extraLarge
+
     )
 }
 
-private fun listAuthorsToString(list: List<String>?): String {
-    var text = EMPTY_TEXT
-    if (list != null) {
-        for (i in list.indices) {
-            text = text.plus(list[i] + SPACE)
-        }
-    }
-
-    return text
+private fun listAuthorsToString(authors: List<String>?): String {
+    return authors?.joinToString(SPACE).orEmpty()
 }

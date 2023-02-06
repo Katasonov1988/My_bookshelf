@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.mybookshelf.data.repository.GoogleapisRepositoryImpl
 
-class BookDetailViewModelFactory (
+class BookDetailViewModelFactory(
     private val repository: GoogleapisRepositoryImpl
-) :ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(
         modelClass: Class<T>,
@@ -19,4 +19,4 @@ class BookDetailViewModelFactory (
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-    }
+}

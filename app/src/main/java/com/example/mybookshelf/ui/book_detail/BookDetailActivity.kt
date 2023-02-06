@@ -12,6 +12,16 @@ import com.example.mybookshelf.databinding.ActivityBookDetailBinding
 import com.squareup.picasso.Picasso
 
 class BookDetailActivity : AppCompatActivity() {
+    companion object {
+        private const val EXTRA_BOOK_ID = "bookId"
+        private const val EMPTY_SYMBOL = ""
+        fun newIntent(context: Context, bookId: String): Intent {
+            val intent = Intent(context, BookDetailActivity::class.java)
+            intent.putExtra(EXTRA_BOOK_ID, bookId)
+            return intent
+        }
+    }
+
     private var bookItemId = EMPTY_SYMBOL
 
     private lateinit var viewModel: BookDetailViewModel
@@ -24,15 +34,13 @@ class BookDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         parseIntent()
+        initViewModel()
+        setDataToView()
+    }
 
-        viewModel = ViewModelProvider(
-            this,
-            Injection.provideBookDetailViewModelFactory())
-            .get(BookDetailViewModel::class.java)
-
+    private fun setDataToView() {
         viewModel.getBookDetaiItem(bookItemId)
-        viewModel.bookItem.observe(this){
-            Log.d("BookDetail",it.toString())
+        viewModel.bookItem.observe(this) {
             with(binding) {
                 tvTitle.text = it.title
                 tvAuthors.text = it.authors
@@ -40,37 +48,32 @@ class BookDetailActivity : AppCompatActivity() {
                 tvPageCount.text = it.pageCount.toString()
                 tvLanguage.text = it.language
                 tvDescription.text = it.description
-                if  (it.imageLinks?.small == null) {
+                if (it.imageLinks.small == null) {
                     ivCoverBook.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
                 } else {
                     Picasso.get().load(it.imageLinks.small).into(ivCoverBook)
                 }
-
             }
         }
+    }
 
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(
+            this,
+            Injection.provideBookDetailViewModelFactory()
+        )
+            .get(BookDetailViewModel::class.java)
     }
 
     private fun parseIntent() {
-        if(!intent.hasExtra(EXTRA_BOOK_ID)) {
-            throw RuntimeException("Param extra book id is absent")
+        if (!intent.hasExtra(EXTRA_BOOK_ID)) {
+            throw java.lang.IllegalArgumentException("Param extra book id is absent")
         }
         if (intent.getStringExtra(EXTRA_BOOK_ID) != null) {
-
             bookItemId = intent.getStringExtra(EXTRA_BOOK_ID).toString()
-            Log.d("BookDetail",bookItemId)
+            Log.d("BookDetail", bookItemId)
         }
     }
 
-    companion object {
-        private const val EXTRA_BOOK_ID = "bookId"
-        private const val EMPTY_SYMBOL = ""
-
-        fun newIntent(context: Context, bookId: String): Intent {
-            val intent = Intent(context, BookDetailActivity::class.java)
-            intent.putExtra(EXTRA_BOOK_ID, bookId)
-            return intent
-        }
-    }
 
 }
