@@ -1,9 +1,9 @@
 package com.example.mybookshelf.data.maper
 
-import com.example.mybookshelf.data.model.BookDetailDto
-import com.example.mybookshelf.data.model.BookInfoDto
-import com.example.mybookshelf.data.model.BookListDto
-import com.example.mybookshelf.data.model.ImageLinksDto
+import com.example.mybookshelf.data.model.BookDetailData
+import com.example.mybookshelf.data.model.BookInfoData
+import com.example.mybookshelf.data.model.BookListData
+import com.example.mybookshelf.data.model.ImageLinksData
 import com.example.mybookshelf.domain.model.BookDetailItem
 import com.example.mybookshelf.domain.model.BookList
 import com.example.mybookshelf.domain.model.BookInfo
@@ -12,14 +12,14 @@ import com.example.mybookshelf.domain.model.ImageLinks
 private const val EMPTY_TEXT = ""
 private const val SPACE = " "
 
-internal fun BookListDto.toBookList(): BookList {
+internal fun BookListData.toBookList(): BookList {
     return BookList(
         id = id,
         volumeInfo = this.volumeInfo.toBookInfo()
     )
 }
 
-internal fun BookDetailDto.toBookDetailItem(): BookDetailItem {
+internal fun BookDetailData.toBookDetailItem(): BookDetailItem {
     return BookDetailItem(
         bookId = id,
         imageLinks = bookInfoDetail.imageLinks?.toImageLinks(),
@@ -32,7 +32,7 @@ internal fun BookDetailDto.toBookDetailItem(): BookDetailItem {
     )
 }
 
-private fun BookInfoDto.toBookInfo(): BookInfo {
+private fun BookInfoData.toBookInfo(): BookInfo {
     return BookInfo(
         title = title,
         authors = authors,
@@ -42,7 +42,7 @@ private fun BookInfoDto.toBookInfo(): BookInfo {
     )
 }
 
-private fun ImageLinksDto.toImageLinks(): ImageLinks {
+private fun ImageLinksData.toImageLinks(): ImageLinks {
     return ImageLinks(
         thumbnail = thumbnail,
         small = small

@@ -1,7 +1,7 @@
 package com.example.mybookshelf.data.network
 
-import com.example.mybookshelf.data.model.BookInfoListOfDataDto
-import com.example.mybookshelf.data.model.BookDetailDto
+import com.example.mybookshelf.data.model.BookInfoListData
+import com.example.mybookshelf.data.model.BookDetailData
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -22,7 +22,7 @@ interface GoogleapisService {
         @Query(START_INDEX_PARAM) page: Int = START_INDEX,
         @Query(MAX_RESULTS_PARAM) itemsPerPage: Int = MAX_RESULTS,
         @Query(QUERY_PARAM_API_KEY) key: String = API_KEY
-    ): BookInfoListOfDataDto
+    ): BookInfoListData
 
 //    детальный вывод по книге
     // https://www.googleapis.com/books/v1/volumes/volumeId
@@ -33,7 +33,7 @@ interface GoogleapisService {
     suspend fun getDetailBookInfo(
         @Path("volumeId") volumeId: String,
         @Query(QUERY_PARAM_API_KEY) key: String = API_KEY
-    ): BookDetailDto
+    ): BookDetailData
 
     companion object {
         private const val API_KEY = "AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE"

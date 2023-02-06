@@ -5,8 +5,9 @@ import com.example.mybookshelf.domain.model.BookList
 import kotlinx.coroutines.flow.Flow
 
 class GetSearchResultStreamUseCase(
-    private val googleapisRepository: GoogleapisRepository) {
-    fun getSearchResultStream (query: String) : Flow<PagingData<BookList>> {
-     return googleapisRepository.getSearchResultStream(query)
+    private val googleapisRepository: GoogleapisRepository
+) {
+    fun getSearchResultStream(query: String): Flow<PagingData<BookList>> {
+        return googleapisRepository.getSearchResultStream(query)
     }
 }

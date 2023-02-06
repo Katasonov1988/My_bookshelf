@@ -5,5 +5,5 @@ data class BookInfo(
     val authors: List<String>?,
     val publishedDate: String?,
     val description: String?,
-    val imageLinks: ImageLinks?
+    val imageLinks: ImageLinks
 )
