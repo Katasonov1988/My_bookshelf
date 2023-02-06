@@ -7,10 +7,10 @@ import androidx.savedstate.SavedStateRegistryOwner
 import com.example.mybookshelf.data.repository.GoogleapisRepositoryImpl
 import com.example.mybookshelf.ui.SearchBooksViewModel
 
-class ViewModelFactory (
+class ViewModelFactory(
     owner: SavedStateRegistryOwner,
     private val repository: GoogleapisRepositoryImpl
-): AbstractSavedStateViewModelFactory(owner, null) {
+) : AbstractSavedStateViewModelFactory(owner, null) {
 
     override fun <T : ViewModel?> create(
         key: String,
@@ -23,6 +23,5 @@ class ViewModelFactory (
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-
 
 }

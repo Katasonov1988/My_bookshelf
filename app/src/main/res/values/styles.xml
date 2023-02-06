@@ -2,7 +2,8 @@
 <resources>
 
     <style name="Widget.MyBookshelf.TextView" parent="Widget.MaterialComponents.TextView">
-
+        <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textAlignment">textStart</item>
@@ -13,6 +14,8 @@
         <item name="boxStrokeColor">#7A7A7A</item>
         <item name="hintTextColor">#7A7A7A</item>
         <item name="boxStrokeWidth">2dp</item>
+
+
     </style>
 
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="@dimen/search_books_constraint_layout_margin_top"
     tools:context=".ui.search_books.SearchBooksActivity">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -20,22 +20,22 @@
             android:id="@+id/ed_search_book"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:hint="@string/search_your_book"
             android:imeOptions="actionSearch"
             android:inputType="textNoSuggestions"
             android:selectAllOnFocus="true"
             app:boxStrokeWidth="@dimen/box_stroke_width"
-            tools:text="Онегин"
-            android:autofillHints="" />
+            tools:text="Онегин" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_books"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="@dimen/search_books_rv_books_margin_left_right"
+        android:layout_marginTop="@dimen/search_books_rv_books_margin_top"
+        android:layout_marginRight="@dimen/search_books_rv_books_margin_left_right"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,10 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.mybookshelf.ui.search_books.list
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -9,6 +10,16 @@ import com.example.mybookshelf.domain.model.BookList
 import com.squareup.picasso.Picasso
 
 class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR) {
+    companion object {
+        private val BOOK_COMPARATOR = object : DiffUtil.ItemCallback<BookList>() {
+            override fun areItemsTheSame(oldItem: BookList, newItem: BookList): Boolean =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: BookList, newItem: BookList): Boolean =
+                oldItem == newItem
+        }
+    }
+
     var onBookItemClickListener: ((BookList) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -33,21 +44,10 @@ class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR
             with(holder) {
                 title.text = bookItem.volumeInfo.title
                 description.text = bookItem.volumeInfo.description
-                var text = ""
-                if (bookItem.volumeInfo.authors != null) {
-                    for (i in bookItem.volumeInfo.authors.indices) {
-                        text = text.plus(bookItem.volumeInfo.authors[i] + " ")
-                    }
-                    author.text = text
-                } else {
-                    author.text = "неизвестный автор"
-                }
-
+                author.text = bookItem.volumeInfo.authors
                 publishedDate.text = bookItem.volumeInfo.publishedDate
 
-
-
-                if  (bookItem.volumeInfo.imageLinks.thumbnail == null) {
+                if (bookItem.volumeInfo.imageLinks.thumbnail == null) {
                     bookCover.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
                 } else {
                     Picasso.get().load(bookItem.volumeInfo.imageLinks.thumbnail).into(bookCover)
@@ -63,13 +63,4 @@ class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR
 
     }
 
-    companion object {
-        private val BOOK_COMPARATOR = object : DiffUtil.ItemCallback<BookList>() {
-            override fun areItemsTheSame(oldItem: BookList, newItem: BookList): Boolean =
-                oldItem.id == newItem.id
-
-            override fun areContentsTheSame(oldItem: BookList, newItem: BookList): Boolean =
-                oldItem == newItem
-        }
-    }
 }

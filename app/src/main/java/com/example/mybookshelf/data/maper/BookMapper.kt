@@ -3,7 +3,7 @@ package com.example.mybookshelf.data.maper
 import com.example.mybookshelf.data.model.*
 import com.example.mybookshelf.domain.model.*
 
-private const val SPACE = " "
+private const val COMMA = ", "
 
 internal fun BookListData.toBookList(): BookList {
     return BookList(
@@ -28,7 +28,7 @@ internal fun BookDetailData.toBookDetailItem(): BookDetailItem {
 private fun BookInfoData.toBookInfo(): BookInfo {
     return BookInfo(
         title = title,
-        authors = authors,
+        authors = listAuthorsToString(authors),
         publishedDate = publishedDate,
         description = description,
         imageLinks = imageLinks.toImageLinks()
@@ -54,5 +54,5 @@ private fun ImageLinksDetailData.toImageLinksDetail(): ImageLinksDetail {
 }
 
 private fun listAuthorsToString(authors: List<String>?): String {
-    return authors?.joinToString(SPACE).orEmpty()
+    return authors?.joinToString(COMMA).orEmpty()
 }

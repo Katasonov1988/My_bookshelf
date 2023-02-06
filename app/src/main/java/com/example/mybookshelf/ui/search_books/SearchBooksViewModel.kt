@@ -11,6 +11,10 @@ import com.example.mybookshelf.domain.model.BookList
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
+
+private const val LAST_SEARCH_QUERY: String = "last_search_query"
+private const val LAST_QUERY_SCROLLED: String = "last_query_scrolled"
+private const val DEFAULT_QUERY = ""
 class SearchBooksViewModel(
     private val repository: GoogleapisRepositoryImpl,
     private val savedStateHandle: SavedStateHandle
@@ -90,7 +94,3 @@ data class UiState(
     val lastQueryScrolled: String = DEFAULT_QUERY,
     val hasNotScrolledForCurrentSearch: Boolean = false
 )
-
-private const val LAST_SEARCH_QUERY: String = "last_search_query"
-private const val LAST_QUERY_SCROLLED: String = "last_query_scrolled"
-private const val DEFAULT_QUERY = ""

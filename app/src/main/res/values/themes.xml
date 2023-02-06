@@ -10,9 +10,10 @@
         <item name="colorSecondaryVariant">@color/grey_light</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="textInputStyle">@style/Widget.MyBookshelf.MaterialComponents.TextInputLayout</item>
+        <item name="textInputStyle">@style/Widget.MyBookshelf.MaterialComponents.TextInputLayout
+        </item>
     </style>
 
 </resources>
