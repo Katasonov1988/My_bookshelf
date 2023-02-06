@@ -31,15 +31,13 @@ private fun BookInfoData.toBookInfo(): BookInfo {
         authors = authors,
         publishedDate = publishedDate,
         description = description,
-        imageLinks = this.imageLinks.toImageLinks()
+        imageLinks = imageLinks.toImageLinks()
     )
 }
 
 private fun ImageLinksData.toImageLinks(): ImageLinks {
     return ImageLinks(
-        smallThumbnail = smallThumbnail,
-        thumbnail = thumbnail,
-
+        thumbnail = thumbnail
         )
 }
 

@@ -47,7 +47,7 @@ class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR
 
 
 
-                if  (bookItem.volumeInfo.imageLinks?.thumbnail == null) {
+                if  (bookItem.volumeInfo.imageLinks.thumbnail == null) {
                     bookCover.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
                 } else {
                     Picasso.get().load(bookItem.volumeInfo.imageLinks.thumbnail).into(bookCover)

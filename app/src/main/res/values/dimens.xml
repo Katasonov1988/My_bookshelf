@@ -7,6 +7,6 @@
     <dimen name="text_field_layout_margin">8dp</dimen>
     <dimen name="box_stroke_width">1dp</dimen>
     <dimen name="book_load_state_text_size">16sp</dimen>
-    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
 
 </resources>
