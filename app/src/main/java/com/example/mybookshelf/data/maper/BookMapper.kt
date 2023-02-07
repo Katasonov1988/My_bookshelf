@@ -8,14 +8,18 @@ private const val COMMA = ", "
 internal fun BookListData.toBookList(): BookList {
     return BookList(
         id = id,
-        volumeInfo = this.volumeInfo.toBookInfo()
+        title = volumeInfo.title,
+        authors = listAuthorsToString(volumeInfo.authors),
+        publishedDate = volumeInfo.publishedDate,
+        description = volumeInfo.description,
+        imageLinks = this.volumeInfo.imageLinks?.toIconString()
     )
 }
 
 internal fun BookDetailData.toBookDetailItem(): BookDetailItem {
     return BookDetailItem(
         bookId = id,
-        imageLinks = this.bookInfoDetail.imageLinks.toImageLinksDetail(),
+        imageLinks = this.bookInfoDetail.imageLinks?.toImageString(),
         title = bookInfoDetail.title,
         authors = listAuthorsToString(bookInfoDetail.authors),
         publishedDate = bookInfoDetail.publishedDate,
@@ -25,32 +29,13 @@ internal fun BookDetailData.toBookDetailItem(): BookDetailItem {
     )
 }
 
-private fun BookInfoData.toBookInfo(): BookInfo {
-    return BookInfo(
-        title = title,
-        authors = listAuthorsToString(authors),
-        publishedDate = publishedDate,
-        description = description,
-        imageLinks = imageLinks.toImageLinks()
-    )
+private fun ImageLinksData.toIconString(): String {
+    return thumbnail.toString()
 }
 
-private fun ImageLinksData.toImageLinks(): ImageLinks {
-    return ImageLinks(
-        thumbnail = thumbnail
-        )
-}
+private fun ImageLinksDetailData.toImageString(): String {
+    return small.toString()
 
-private fun ImageLinksDetailData.toImageLinksDetail(): ImageLinksDetail {
-    return ImageLinksDetail(
-        smallThumbnail = smallThumbnail,
-        thumbnail = thumbnail,
-        small = small,
-        medium = medium,
-        large = large,
-        extraLarge = extraLarge
-
-    )
 }
 
 private fun listAuthorsToString(authors: List<String>?): String {

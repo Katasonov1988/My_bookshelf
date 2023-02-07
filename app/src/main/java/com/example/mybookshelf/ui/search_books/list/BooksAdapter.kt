@@ -42,15 +42,15 @@ class BooksAdapter : PagingDataAdapter<BookList, BookViewHolder>(BOOK_COMPARATOR
 
         } else {
             with(holder) {
-                title.text = bookItem.volumeInfo.title
-                description.text = bookItem.volumeInfo.description
-                author.text = bookItem.volumeInfo.authors
-                publishedDate.text = bookItem.volumeInfo.publishedDate
+                title.text = bookItem.title
+                description.text = bookItem.description
+                author.text = bookItem.authors
+                publishedDate.text = bookItem.publishedDate
 
-                if (bookItem.volumeInfo.imageLinks.thumbnail == null) {
+                if (bookItem.imageLinks == null) {
                     bookCover.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
                 } else {
-                    Picasso.get().load(bookItem.volumeInfo.imageLinks.thumbnail).into(bookCover)
+                    Picasso.get().load(bookItem.imageLinks).into(bookCover)
                 }
             }
 

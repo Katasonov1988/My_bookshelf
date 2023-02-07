@@ -51,10 +51,10 @@ class BookDetailActivity : AppCompatActivity() {
                     resources?.getString(R.string.page_count, it.pageCount.toString())
                 tvBookDetailLanguage.text = resources?.getString(R.string.language, it.language)
                 tvBookDetailDescription.text = it.description
-                if (it.imageLinks.small == null) {
+                if (it.imageLinks == null) {
                     ivBookDetailCover.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
                 } else {
-                    Picasso.get().load(it.imageLinks.small).into(ivBookDetailCover)
+                    Picasso.get().load(it.imageLinks).into(ivBookDetailCover)
                 }
             }
         }

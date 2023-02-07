@@ -22,7 +22,9 @@ class BookPagingSource(
         val apiQuery = query
         return try {
             val response = googleapisService.getBookList(apiQuery, position, params.loadSize)
+            Log.d("datas",response.toString())
             val listBooks = response.items.map { it.toBookList() }
+
             val nextKey = if (listBooks.isEmpty()) {
                 null
             } else {
