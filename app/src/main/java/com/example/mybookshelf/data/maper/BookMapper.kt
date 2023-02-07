@@ -1,28 +1,25 @@
 package com.example.mybookshelf.data.maper
 
-import com.example.mybookshelf.data.model.BookDetailDto
-import com.example.mybookshelf.data.model.BookInfoDto
-import com.example.mybookshelf.data.model.BookListDto
-import com.example.mybookshelf.data.model.ImageLinksDto
-import com.example.mybookshelf.domain.model.BookDetailItem
-import com.example.mybookshelf.domain.model.BookList
-import com.example.mybookshelf.domain.model.BookInfo
-import com.example.mybookshelf.domain.model.ImageLinks
+import com.example.mybookshelf.data.model.*
+import com.example.mybookshelf.domain.model.*
 
-private const val EMPTY_TEXT = ""
-private const val SPACE = " "
+private const val COMMA = ", "
 
-internal fun BookListDto.toBookList(): BookList {
+internal fun BookListData.toBookList(): BookList {
     return BookList(
         id = id,
-        volumeInfo = this.volumeInfo.toBookInfo()
+        title = volumeInfo.title,
+        authors = listAuthorsToString(volumeInfo.authors),
+        publishedDate = volumeInfo.publishedDate,
+        description = volumeInfo.description,
+        imageLinks = this.volumeInfo.imageLinks?.toIconString()
     )
 }
 
-internal fun BookDetailDto.toBookDetailItem(): BookDetailItem {
+internal fun BookDetailData.toBookDetailItem(): BookDetailItem {
     return BookDetailItem(
         bookId = id,
-        imageLinks = bookInfoDetail.imageLinks?.toImageLinks(),
+        imageLinks = this.bookInfoDetail.imageLinks?.toImageString(),
         title = bookInfoDetail.title,
         authors = listAuthorsToString(bookInfoDetail.authors),
         publishedDate = bookInfoDetail.publishedDate,
@@ -32,30 +29,15 @@ internal fun BookDetailDto.toBookDetailItem(): BookDetailItem {
     )
 }
 
-private fun BookInfoDto.toBookInfo(): BookInfo {
-    return BookInfo(
-        title = title,
-        authors = authors,
-        publishedDate = publishedDate,
-        description = description,
-        imageLinks = this.imageLinks?.toImageLinks()
-    )
+private fun ImageLinksData.toIconString(): String {
+    return thumbnail.toString()
 }
 
-private fun ImageLinksDto.toImageLinks(): ImageLinks {
-    return ImageLinks(
-        thumbnail = thumbnail,
-        small = small
-    )
+private fun ImageLinksDetailData.toImageString(): String {
+    return small.toString()
+
 }
 
-private fun listAuthorsToString(list: List<String>?): String {
-    var text = EMPTY_TEXT
-    if (list != null) {
-        for (i in list.indices) {
-            text = text.plus(list[i] + SPACE)
-        }
-    }
-
-    return text
+private fun listAuthorsToString(authors: List<String>?): String {
+    return authors?.joinToString(COMMA).orEmpty()
 }

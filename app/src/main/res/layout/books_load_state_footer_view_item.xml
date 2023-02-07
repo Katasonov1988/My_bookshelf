@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="@dimen/books_load_state_ll_padding">
 
     <TextView
         android:id="@+id/error_msg"
@@ -21,8 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginTop="@dimen/progress_bar_margin"
+        android:layout_marginBottom="@dimen/progress_bar_margin" />
 
     <Button
         android:id="@+id/retry_button"

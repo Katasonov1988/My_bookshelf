@@ -2,7 +2,8 @@
 <resources>
 
     <style name="Widget.MyBookshelf.TextView" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textColor">@color/book_info_text_color</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textAlignment">textStart</item>
@@ -12,7 +13,9 @@
     <style name="Widget.MyBookshelf.MaterialComponents.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">#7A7A7A</item>
         <item name="hintTextColor">#7A7A7A</item>
-        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidth">2dp</item>
+
+
     </style>
 
 </resources>

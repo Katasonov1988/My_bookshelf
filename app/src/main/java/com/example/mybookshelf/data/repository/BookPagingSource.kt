@@ -12,20 +12,19 @@ import java.io.IOException
 
 private const val GOOGLEAPIAS_STARTING_PAGE_INDEX = 0
 
-
 class BookPagingSource(
     private val googleapisService: GoogleapisService,
     private val query: String
 ) : PagingSource<Int, BookList>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, BookList> {
-        Log.d("ShowBook", "запущен метод load в BookPagingSource")
         val position = params.key ?: GOOGLEAPIAS_STARTING_PAGE_INDEX
         val apiQuery = query
         return try {
             val response = googleapisService.getBookList(apiQuery, position, params.loadSize)
+            Log.d("datas",response.toString())
             val listBooks = response.items.map { it.toBookList() }
-            Log.d("ShowBook", response.toString())
+
             val nextKey = if (listBooks.isEmpty()) {
                 null
             } else {
@@ -44,7 +43,6 @@ class BookPagingSource(
             return LoadResult.Error(exception)
         }
     }
-
 
     override fun getRefreshKey(state: PagingState<Int, BookList>): Int? {
         return state.anchorPosition?.let { anchorPosition ->

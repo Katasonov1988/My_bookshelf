@@ -4,48 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:backgroundTint="@color/blue_grey"
-    app:cardElevation="@dimen/card_elevation"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/grey">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_book_cover"
             android:layout_width="80dp"
             android:layout_height="110dp"
-            android:paddingBottom="8dp"
-            android:contentDescription="@string/books_cover"
+            android:contentDescription="@string/book_icon"
+            android:paddingEnd="@dimen/book_info_item_padding_end"
             android:src="@drawable/ic_baseline_image_not_supported_24"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <View
-            android:id="@+id/view_line_activity_info_item"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/book_info_background"
-            android:backgroundTint="@color/hint_text_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry" />
 
         <TextView
             android:id="@+id/book_title"
             style="@style/Widget.MyBookshelf.TextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_book_cover"
-            app:layout_constraintTop_toTopOf="@id/iv_book_cover"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Поэмы / На английском и русском языке" />
 
         <TextView
@@ -53,7 +39,8 @@
             style="@style/Widget.MyBookshelf.TextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_book_cover"
             app:layout_constraintTop_toBottomOf="@id/book_title"
@@ -64,7 +51,7 @@
             style="@style/Widget.MyBookshelf.TextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:maxLines="1"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_book_cover"
@@ -76,12 +63,10 @@
             style="@style/Widget.MyBookshelf.TextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:textStyle="italic"
             android:ellipsize="end"
             android:maxLines="3"
+            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/view_line_activity_info_item"
             app:layout_constraintStart_toEndOf="@id/iv_book_cover"
             app:layout_constraintTop_toBottomOf="@id/book_publication_date"
             tools:text="Личность Евгения Онегина можно назвать довольно сложной, неоднозначной и противоречивой. Его эгоизм, тщеславие и высокие запросы как к окружающей действительности, так и к самому себе - с одной стороны, тонкая и ранимая душевная организация, мятежный дух, стремящийся к свободе - с другой." />

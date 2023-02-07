@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_grey"
-    android:padding="@dimen/book_detail_padding"
+    android:paddingStart="@dimen/book_detail_constraint_layout_padding_left_right"
+    android:paddingTop="@dimen/book_detail_constraint_layout_padding_top_bottom"
+    android:paddingEnd="@dimen/book_detail_constraint_layout_padding_left_right"
+    android:paddingBottom="@dimen/book_detail_constraint_layout_padding_top_bottom"
     tools:context=".ui.book_detail.BookDetailActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -13,132 +15,103 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="196dp" />
+        app:layout_constraintGuide_begin="150dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="247dp" />
+        app:layout_constraintGuide_begin="210dp" />
 
     <ImageView
-        android:id="@+id/iv_cover_book"
+        android:id="@+id/iv_book_detail_cover"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/book_icon"
+        android:paddingEnd="@dimen/book_detail_padding_end"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_book_detail_title"
+        style="@style/Widget.MyBookshelf.TextView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/iv_cover_book"
-        app:layout_constraintStart_toEndOf="@id/iv_cover_book">
-
-        <TextView
-            android:id="@+id/tv_title"
-            style="@style/Widget.MyBookshelf.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="3"
-            android:ellipsize="end"
-            android:singleLine="false"
-            android:paddingStart="@dimen/book_detail_padding"
-            android:paddingEnd="@dimen/book_detail_padding"
-            tools:text="Евгений Онегин" />
-
-        <TextView
-            android:id="@+id/tv_authors"
-            style="@style/Widget.MyBookshelf.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="3"
-            android:ellipsize="end"
-            android:paddingStart="@dimen/book_detail_padding"
-            android:paddingEnd="@dimen/book_detail_padding"
-            tools:text="Пушкин" />
-
-        <TextView
-            android:id="@+id/tv_icon_published_date"
-            style="@style/Widget.MyBookshelf.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/book_detail_padding"
-            android:paddingEnd="@dimen/book_detail_padding_one"
-            android:text="@string/published_date"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/tv_published_date"
-            style="@style/Widget.MyBookshelf.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:paddingStart="@dimen/book_detail_padding"
-            android:paddingEnd="@dimen/book_detail_padding_one"
-            tools:text="1892" />
-
-        <TextView
-            android:id="@+id/tv_icon_page_count"
-            style="@style/Widget.MyBookshelf.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/book_detail_padding"
-            android:paddingEnd="@dimen/book_detail_padding_one"
-            android:text="@string/page_count"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/tv_page_count"
-            style="@style/Widget.MyBookshelf.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:paddingStart="@dimen/book_detail_padding"
-            android:paddingEnd="@dimen/book_detail_padding_one"
-            tools:text="400" />
-
-        <TextView
-            android:id="@+id/tv_icon_language"
-            style="@style/Widget.MyBookshelf.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/book_detail_padding"
-            android:paddingEnd="@dimen/book_detail_padding_one"
-            android:text="@string/language"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/tv_language"
-            style="@style/Widget.MyBookshelf.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:paddingStart="@dimen/book_detail_padding"
-            android:paddingEnd="@dimen/book_detail_padding_one"
-            tools:text="русский" />
-    </LinearLayout>
+        app:layout_constraintStart_toEndOf="@+id/iv_book_detail_cover"
+        app:layout_constraintTop_toTopOf="@id/iv_book_detail_cover"
+        tools:text="Евгений Онегин" />
 
     <TextView
-        android:id="@+id/tv_description"
+        android:id="@+id/tv_book_detail_author"
         style="@style/Widget.MyBookshelf.TextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/book_detail_padding"
-        android:paddingEnd="@dimen/book_detail_padding"
-        android:paddingTop="16dp"
+        android:layout_marginTop="@dimen/book_detail_tv_book_detail_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_book_detail_cover"
+        app:layout_constraintTop_toBottomOf="@+id/tv_book_detail_title"
+        tools:text="Пушкин" />
+
+    <TextView
+        android:id="@+id/tv_book_detail_published_date"
+        style="@style/Widget.MyBookshelf.TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/book_detail_tv_book_detail_margin_top"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_book_detail_cover"
+        app:layout_constraintTop_toBottomOf="@+id/tv_book_detail_author"
+        tools:text="Дата публикации: 1892" />
+
+    <TextView
+        android:id="@+id/tv_book_detail_page_count"
+        style="@style/Widget.MyBookshelf.TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/book_detail_tv_book_detail_margin_top"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_book_detail_cover"
+        app:layout_constraintTop_toBottomOf="@+id/tv_book_detail_published_date"
+        tools:text="Кол-во страниц: 400" />
+
+    <TextView
+        android:id="@+id/tv_book_detail_language"
+        style="@style/Widget.MyBookshelf.TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/book_detail_tv_book_detail_margin_top"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_book_detail_cover"
+        app:layout_constraintTop_toBottomOf="@+id/tv_book_detail_page_count"
+        tools:text="Язык: русский" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="@dimen/book_detail_scroll_view_padding_top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@+id/iv_cover_book"
-        tools:text="
+        app:layout_constraintTop_toBottomOf="@+id/iv_book_detail_cover">
+
+        <TextView
+            android:id="@+id/tv_book_detail_description"
+            style="@style/Widget.MyBookshelf.TextView"
+            android:maxLines="@integer/material_motion_duration_long_1"
+            android:paddingBottom="@dimen/book_detail_tv_book_detail_padding_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="
     «Мой дядя самых честных правил,
     Когда не в шутку занемог,
     Он уважать себя заставил
@@ -198,6 +171,6 @@
     И кланялся непринужденно;
     Чего ж вам больше? Свет решил,
     Что он умен и очень мил." />
-
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

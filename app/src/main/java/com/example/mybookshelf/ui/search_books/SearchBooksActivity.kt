@@ -8,7 +8,6 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -31,16 +30,14 @@ import kotlinx.coroutines.launch
 class SearchBooksActivity : AppCompatActivity() {
 
     private lateinit var booksAdapter: BooksAdapter
-
+    private lateinit var viewModel: SearchBooksViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivitySearchBooksBinding.inflate(layoutInflater)
         val view = binding.root
-        setContentView(view)
 
-        val viewModel = ViewModelProvider(
-            this, Injection.provideViewModelFactory(owner = this)
-        ).get(SearchBooksViewModel::class.java)
+        setContentView(view)
+        initViewModel()
 
         val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         binding.rvBooks.addItemDecoration(decoration)
@@ -59,6 +56,11 @@ class SearchBooksActivity : AppCompatActivity() {
             }
         }
 
+    }
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(
+            this, Injection.provideViewModelFactory(owner = this)
+        ).get(SearchBooksViewModel::class.java)
     }
 
     private fun ActivitySearchBooksBinding.bindState(

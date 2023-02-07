@@ -10,8 +10,19 @@ import com.example.mybookshelf.Injection
 import com.example.mybookshelf.R
 import com.example.mybookshelf.databinding.ActivityBookDetailBinding
 import com.squareup.picasso.Picasso
+import java.lang.IllegalArgumentException
 
 class BookDetailActivity : AppCompatActivity() {
+    companion object {
+        private const val EXTRA_BOOK_ID = "bookId"
+        private const val EMPTY_SYMBOL = ""
+        fun newIntent(context: Context, bookId: String): Intent {
+            val intent = Intent(context, BookDetailActivity::class.java)
+            intent.putExtra(EXTRA_BOOK_ID, bookId)
+            return intent
+        }
+    }
+
     private var bookItemId = EMPTY_SYMBOL
 
     private lateinit var viewModel: BookDetailViewModel
@@ -24,53 +35,46 @@ class BookDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         parseIntent()
+        initViewModel()
+        setDataToView()
+    }
 
-        viewModel = ViewModelProvider(
-            this,
-            Injection.provideBookDetailViewModelFactory())
-            .get(BookDetailViewModel::class.java)
-
+    private fun setDataToView() {
         viewModel.getBookDetaiItem(bookItemId)
-        viewModel.bookItem.observe(this){
-            Log.d("BookDetail",it.toString())
+        viewModel.bookItem.observe(this) {
             with(binding) {
-                tvTitle.text = it.title
-                tvAuthors.text = it.authors
-                tvPublishedDate.text = it.publishedDate
-                tvPageCount.text = it.pageCount.toString()
-                tvLanguage.text = it.language
-                tvDescription.text = it.description
-                if  (it.imageLinks?.small == null) {
-                    ivCoverBook.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
+                tvBookDetailTitle.text = it.title
+                tvBookDetailAuthor.text = it.authors
+                tvBookDetailPublishedDate.text =
+                    resources?.getString(R.string.published_date, it.publishedDate)
+                tvBookDetailPageCount.text =
+                    resources?.getString(R.string.page_count, it.pageCount.toString())
+                tvBookDetailLanguage.text = resources?.getString(R.string.language, it.language)
+                tvBookDetailDescription.text = it.description
+                if (it.imageLinks == null) {
+                    ivBookDetailCover.setImageResource(R.drawable.ic_baseline_image_not_supported_24)
                 } else {
-                    Picasso.get().load(it.imageLinks.small).into(ivCoverBook)
+                    Picasso.get().load(it.imageLinks).into(ivBookDetailCover)
                 }
-
             }
         }
+    }
 
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(
+            this,
+            Injection.provideBookDetailViewModelFactory()
+        )
+            .get(BookDetailViewModel::class.java)
     }
 
     private fun parseIntent() {
-        if(!intent.hasExtra(EXTRA_BOOK_ID)) {
-            throw RuntimeException("Param extra book id is absent")
+        if (!intent.hasExtra(EXTRA_BOOK_ID)) {
+            throw IllegalArgumentException("Param extra book id is absent")
         }
         if (intent.getStringExtra(EXTRA_BOOK_ID) != null) {
-
             bookItemId = intent.getStringExtra(EXTRA_BOOK_ID).toString()
-            Log.d("BookDetail",bookItemId)
+            Log.d("BookDetail", bookItemId)
         }
     }
-
-    companion object {
-        private const val EXTRA_BOOK_ID = "bookId"
-        private const val EMPTY_SYMBOL = ""
-
-        fun newIntent(context: Context, bookId: String): Intent {
-            val intent = Intent(context, BookDetailActivity::class.java)
-            intent.putExtra(EXTRA_BOOK_ID, bookId)
-            return intent
-        }
-    }
-
 }

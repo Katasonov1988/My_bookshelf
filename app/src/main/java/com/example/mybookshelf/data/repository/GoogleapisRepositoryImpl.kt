@@ -12,6 +12,11 @@ import kotlinx.coroutines.flow.Flow
 
 class GoogleapisRepositoryImpl(private val googleapisService: GoogleapisService) :
     GoogleapisRepository {
+
+    companion object {
+        const val NETWORK_PAGE_SIZE = 10
+    }
+
     override fun getSearchResultStream(query: String): Flow<PagingData<BookList>> {
         return Pager(
             config = PagingConfig(
@@ -26,10 +31,6 @@ class GoogleapisRepositoryImpl(private val googleapisService: GoogleapisService)
 
     override suspend fun getDetailBookInfo(bookId: String): BookDetailItem {
         return googleapisService.getDetailBookInfo(bookId).toBookDetailItem()
-    }
-
-    companion object {
-        const val NETWORK_PAGE_SIZE = 10
     }
 
 }

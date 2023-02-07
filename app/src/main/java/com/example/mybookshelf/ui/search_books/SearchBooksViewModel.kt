@@ -6,17 +6,21 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.mybookshelf.data.repository.GoogleapisRepositoryImpl
-import com.example.mybookshelf.domain.GetSearchResultStreamUseCase
+import com.example.mybookshelf.domain.GetSearchResultStreamInteractor
 import com.example.mybookshelf.domain.model.BookList
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
+
+private const val LAST_SEARCH_QUERY: String = "last_search_query"
+private const val LAST_QUERY_SCROLLED: String = "last_query_scrolled"
+private const val DEFAULT_QUERY = ""
 class SearchBooksViewModel(
     private val repository: GoogleapisRepositoryImpl,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val searchResultStreamUseCase = GetSearchResultStreamUseCase(repository)
+    private val searchResultStreamUseCase = GetSearchResultStreamInteractor(repository)
 
     val state: StateFlow<UiState>
     val pagingDataFlow: Flow<PagingData<BookList>>
@@ -90,7 +94,3 @@ data class UiState(
     val lastQueryScrolled: String = DEFAULT_QUERY,
     val hasNotScrolledForCurrentSearch: Boolean = false
 )
-
-private const val LAST_SEARCH_QUERY: String = "last_search_query"
-private const val LAST_QUERY_SCROLLED: String = "last_query_scrolled"
-private const val DEFAULT_QUERY = ""

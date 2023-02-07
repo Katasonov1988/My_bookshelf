@@ -15,6 +15,7 @@ object Injection {
     fun provideViewModelFactory(owner: SavedStateRegistryOwner): ViewModelProvider.Factory {
         return ViewModelFactory(owner, provideBookRepository())
     }
+
     fun provideBookDetailViewModelFactory(): ViewModelProvider.Factory {
         return BookDetailViewModelFactory(provideBookRepository())
     }
