@@ -37,7 +37,6 @@ interface GoogleapisService {
                 .create(GoogleapisService::class.java)
         }
     }
-
     //    поисковый запрос на книги
 //    https://www.googleapis.com/books/v1/volumes?q=Онегин&AIzaSyBNNZyP7qFC2MI66J39J3BAxPScDtzAIPE
     //    https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:пушкин+intitle:онегин

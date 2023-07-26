@@ -2,7 +2,7 @@ package com.example.mybookshelf.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class BookInfoDetailDto(
+data class BookInfoDetailData(
     @SerializedName("title") val title: String? = null,
     @SerializedName("subtitle") val subtitle: String? = null,
     @SerializedName("authors") val authors: List<String>? = null,

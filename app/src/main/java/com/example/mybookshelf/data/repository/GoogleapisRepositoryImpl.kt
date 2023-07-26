@@ -27,6 +27,7 @@ class GoogleapisRepositoryImpl(private val googleapisService: GoogleapisService)
                 BookPagingSource(googleapisService, query)
             }
         ).flow
+
     }
 
     override suspend fun getDetailBookInfo(bookId: String): BookDetailItem {

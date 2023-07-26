@@ -102,8 +102,6 @@ class SearchBooksActivity : AppCompatActivity() {
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 updateBookListFromInput(onQueryChanged)
                 inputMethodManager(view)
-
-
                 true
             } else {
                 false
